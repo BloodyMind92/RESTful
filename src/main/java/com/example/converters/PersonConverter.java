@@ -2,8 +2,8 @@ package com.example.converters;
 
 import org.springframework.stereotype.Component;
 
-import com.example.beans.Person;
-import com.example.beans.PersonDTO;
+import com.example.model.Person;
+import com.example.model.PersonDTO;
 
 @Component
 public class PersonConverter implements BaseConverter<Person, PersonDTO>{

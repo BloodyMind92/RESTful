@@ -1,15 +1,22 @@
-package com.example.beans;
+package com.example.model;
 
 import java.sql.Date;
 
 public class PersonDTO {
 	
+	private int id;
 	private String name;
 	private String lastName;
 	private String sex;
 	private Date brithday;
 	private long PESEL;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

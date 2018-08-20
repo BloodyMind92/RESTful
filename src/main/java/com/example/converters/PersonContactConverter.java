@@ -1,7 +1,7 @@
 package com.example.converters;
 
-import com.example.beans.PersonContact;
-import com.example.beans.PersonContactDTO;
+import com.example.model.PersonContact;
+import com.example.model.PersonContactDTO;
 
 public class PersonContactConverter implements BaseConverter<PersonContact, PersonContactDTO>{
 

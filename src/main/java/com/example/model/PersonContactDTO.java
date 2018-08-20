@@ -1,6 +1,6 @@
-package com.example.beans;
+package com.example.model;
 
-public class PersonContact {
+public class PersonContactDTO {
 
 	private long peopleID;
 	private String kind;
@@ -25,6 +25,4 @@ public class PersonContact {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 }

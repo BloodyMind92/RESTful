@@ -1,16 +1,35 @@
-package com.example.beans;
+package com.example.model;
 
 import java.sql.Date;
 
-public class Person {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "person")
+public class Person {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
 	private String name;
+	
+	@Column(name="lastname")
 	private String lastName;
+	
 	private String sex;
+	
 	private Date brithday;
+	
+	@Column(name="pesel")
 	private long PESEL;
 	
-	private Person(Bulider bulider) {
+	public Person(Bulider bulider) {
 		
 		if(bulider == null) {
 			return;
@@ -23,6 +42,17 @@ public class Person {
 		PESEL = bulider.PESEL;
 	}
 	
+	protected Person() {
+	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

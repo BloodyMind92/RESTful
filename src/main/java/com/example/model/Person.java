@@ -1,6 +1,8 @@
 package com.example.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "person")
@@ -17,6 +22,8 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@NonNull
+	@Size(min = 2, message="Za mało liter")
 	private String name;
 	
 	@Column(name="lastname")
@@ -27,7 +34,7 @@ public class Person {
 	private Date brithday;
 	
 	@Column(name="pesel")
-	private long PESEL;
+	private String pesel;
 	
 	public Person(Bulider bulider) {
 		
@@ -39,7 +46,7 @@ public class Person {
 		lastName = bulider.lastName;
 		sex = bulider.sex;
 		brithday = bulider.brithday;
-		PESEL = bulider.PESEL;
+		pesel = bulider.pesel;
 	}
 	
 	protected Person() {
@@ -77,11 +84,11 @@ public class Person {
 	public void setBrithday(Date brithday) {
 		this.brithday = brithday;
 	}
-	public long getPESEL() {
-		return PESEL;
+	public String getPESEL() {
+		return pesel;
 	}
-	public void setPESEL(long pESEL) {
-		PESEL = pESEL;
+	public void setPESEL(String pESEL) {
+		pesel = pESEL;
 	}
 	
 	public static class Bulider{
@@ -90,7 +97,7 @@ public class Person {
 		private String lastName;
 		private String sex;
 		private Date brithday;
-		private long PESEL;
+		private String pesel;
 		
 		public Bulider nameOfPerson(String name) {
 			this.name = name;
@@ -108,12 +115,20 @@ public class Person {
 		}
 		
 		public Bulider brithdayOfPerson(Date brithday) {
+			
+			Calendar calendar = Calendar.getInstance();
+			calendar.set(1918, 1, 1);
+			
+			if(brithday.after(new Date()) || brithday.before(calendar.getTime())){
+				return null;
+			}
+			
 			this.brithday = brithday;
 			return this;
 		}
 		
-		public Bulider PESELOfPerson(long PESEL) {
-			this.PESEL = PESEL;
+		public Bulider PESELOfPerson(String PESEL) {
+			this.pesel = PESEL;
 			return this;
 		}
 		

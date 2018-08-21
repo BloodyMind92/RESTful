@@ -1,6 +1,6 @@
 package com.example.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class PersonDTO {
 	
@@ -9,7 +9,7 @@ public class PersonDTO {
 	private String lastName;
 	private String sex;
 	private Date brithday;
-	private long PESEL;
+	private String pesel;
 	
 	public int getId() {
 		return id;
@@ -41,11 +41,11 @@ public class PersonDTO {
 	public void setBrithday(Date brithday) {
 		this.brithday = brithday;
 	}
-	public long getPESEL() {
-		return PESEL;
+	public String getPESEL() {
+		return pesel;
 	}
-	public void setPESEL(long pESEL) {
-		PESEL = pESEL;
+	public void setPESEL(String pesel) {
+		this.pesel = pesel;
 	}
 	
 	

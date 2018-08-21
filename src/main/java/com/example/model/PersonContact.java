@@ -1,7 +1,11 @@
 package com.example.model;
 
+import javax.persistence.Entity;
+
+
 public class PersonContact {
 
+	private long id;
 	private long peopleID;
 	private String kind;
 	private String description;

@@ -22,10 +22,12 @@ public class Person {
 	private long id;
 	
 	@NonNull
-	@Size(min = 2, message="Za mało liter")
+	@Size(min = 2, message="Name should have atleast 2 characters")
 	private String name;
 	
 	@Column(name="lastname")
+	@NonNull
+	@Size(min = 2, message="LastName should have atleast 2 characters")
 	private String lastName;
 	
 	private String sex;
@@ -33,6 +35,8 @@ public class Person {
 	private Date brithday;
 	
 	@Column(name="pesel")
+	@NonNull()
+	@Size(min = 11, max = 11, message="Pesel should have 11 characters")
 	private String pesel;
 	
 	public Person(Bulider bulider) {
@@ -114,14 +118,6 @@ public class Person {
 		}
 		
 		public Bulider brithdayOfPerson(Date brithday) {
-			
-			Calendar calendar = Calendar.getInstance();
-			calendar.set(1918, 1, 1);
-			
-			if(brithday.after(new Date()) || brithday.before(calendar.getTime())){
-				return null;
-			}
-			
 			this.brithday = brithday;
 			return this;
 		}

@@ -1,6 +1,5 @@
 package com.example.model;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -14,7 +13,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
 
-@Entity
+@Entity(name = "person")
 @Table(name = "person")
 public class Person {
 	

@@ -1,5 +1,6 @@
 package com.example.model;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name ="personcontact")
 @Table(name="personcontact")
 public class PersonContact {
 
@@ -16,6 +17,7 @@ public class PersonContact {
 	private long id;
 	
 	@Column(name="personid")
+	@Basic
 	private long personId;
 	private String kind;
 	private String description;

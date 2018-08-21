@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -80,12 +83,22 @@ public class PersonController {
 		 }
 		 
 	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/restful/findPerson")
+	
+	@RequestMapping(method=RequestMethod.GET, value="/restful/findPeopleByBirthDateBetween")
 	@ResponseBody
-	public List<Person> findPersonByNameAndLastName(@RequestParam(name = "name") String name,
-			@RequestParam(name = "lastName") String lastName) {
-		return (List<Person>) persons.findByNameAndLastName(name, lastName);
+	public List<Person> findPeopleByBirthDateBetween(@RequestParam(name="dateBefore") String dateBefore, @RequestParam(name="dateAfter") String dateAfter) throws ParseException{
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+		
+		return persons.findPeopleByBirthDateBetween(sdf.parse(dateBefore), sdf.parse(dateAfter));
+	}
+	
+	
+	@RequestMapping(method=RequestMethod.GET, value="/restful/findPeopleByEmail")
+	@ResponseBody
+	public List<Person> findPeopleByEmail(@RequestParam(name="email") String email){
+		
+		return persons.findPeopleByEmail(email);
 	}
 
 }

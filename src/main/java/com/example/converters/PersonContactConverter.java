@@ -9,9 +9,8 @@ public class PersonContactConverter implements BaseConverter<PersonContact, Pers
 	public PersonContactDTO convert(PersonContact from) {
 		
 		PersonContactDTO dto = new PersonContactDTO();
-		dto.setPeopleID(from.getPeopleID());
-		dto.setKind(from.getKind());
-		dto.setDescription(from.getDescription());
+		dto.setEmail(from.getDescription());
+		dto.setPhoneNumber(from.getDescription());
 		
 		return dto;
 	}

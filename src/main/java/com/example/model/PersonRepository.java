@@ -2,7 +2,6 @@ package com.example.model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
